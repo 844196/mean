@@ -1,0 +1,9 @@
+#!/use/bin/env node
+// vim:set ft=javascript:
+
+var app = require('../src/app')
+let port = process.env.API_PORT || 3000
+
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`)
+})
