@@ -7,7 +7,7 @@ let todoController = new TodoController()
 router.get('/api/v1/todos', todoController.getList)
 router.get('/api/v1/todos/:id', todoController.get)
 router.post('/api/v1/todos', todoController.create)
-router.put('/api/v1/todos/:id', todoController.update)
+router.patch('/api/v1/todos/:id', todoController.patch)
 router.delete('/api/v1/todos/:id', todoController.delete)
 
 module.exports = router

@@ -31,12 +31,12 @@ TodoSchema.statics.getById = (id) => {
     })
 }
 
-TodoSchema.statics.updateByEntity = (entity) => {
+TodoSchema.statics.updateByIdAndPatch = (id, patch) => {
   return Todo
     .findByIdAndUpdate(
-      entity.id,
-      {$set: {name: entity.name, isDone: entity.isDone}},
-      {new: false}
+      id,
+      {$set: patch},
+      {new: true}
     )
     .then((updatedEntity) => {
       return new Promise((resolve, reject) => {

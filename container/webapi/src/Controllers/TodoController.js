@@ -37,12 +37,12 @@ class TodoController
       .catch(TodoController.commonErrorHandler(res))
   }
 
-  update(req, res)
+  patch(req, res)
   {
     Todo
-      .updateByEntity(req.body)
+      .updateByIdAndPatch(req.params.id, req.body)
       .then((updatedEntity) => {
-        res.status(204).location(`/todos/${updatedEntity.id}`).end()
+        res.status(200).json(updatedEntity)
       })
       .catch(TodoController.commonErrorHandler(res))
   }
