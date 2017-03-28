@@ -1,19 +1,22 @@
-install:
-	@mkdir -p data/db
-container.start: install
-	@docker-compose up --build
-container.status:
-	@docker-compose ps
-container.stop:
+all:
+	@mkdir -p data/db data/frontend
+	@$(MAKE) -C container/frontend
+	@cp -rf container/frontend/index.html data/frontend/index.html
+	@cp -rf container/frontend/dist data/frontend/dist
+	@docker-compose build
+start:
+	@docker-compose up -d
+log:
+	@docker-compose logs -f
+stop:
 	@docker-compose stop
-container.clean: container.stop
+clean: stop
 	@docker-compose rm --force
-db.clean: container.clean
 	@rm -rf ./data/db/*
 
 .PHONY:
-	install \
-	container.start \
-	container.status \
-	container.stop \
-	db.clean
+	all \
+	start \
+	log \
+	stop \
+	clean
