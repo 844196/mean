@@ -11,10 +11,20 @@ const state = {
 }
 
 const getters = {
-  sortedList(state) {
+  all(state) {
     return state.list.sort((itemA, itemB) => {
       if (itemA.isDone === itemB.isDone) return 0
       return itemA.isDone ? 1 : -1
+    })
+  },
+  complete(state) {
+    return state.list.filter((item) => {
+      return item.isDone
+    })
+  },
+  incomplete(state) {
+    return state.list.filter((item) => {
+      return !item.isDone
     })
   },
 }

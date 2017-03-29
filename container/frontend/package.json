@@ -12,6 +12,7 @@
     "stylus": "^0.54.5",
     "vue": "^2.2.1",
     "vue-material": "^0.7.1",
+    "vue-router": "^2.3.1",
     "vuex": "^2.2.1"
   },
   "devDependencies": {
