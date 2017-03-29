@@ -22,7 +22,7 @@
                 md-icon delete
     md-button.md-fab.md-fab-bottom-right(@click.native='openDialog("Add todo", "", "")')
       md-icon add
-    md-snackbar(md-position='top right', md-duration='1000', ref='notice')
+    md-snackbar(md-position='bottom right', md-duration='1000', ref='notice')
       span {{ notifyMessage }}
     md-dialog-prompt(v-model='dialog.value', :md-title='dialog.title', @close='closeDialog', ref='upsertTodo')
 </template>
