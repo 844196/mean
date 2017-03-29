@@ -2,7 +2,7 @@ all: ## Setup application
 	@mkdir -p data/db data/frontend
 	@$(MAKE) -C container/frontend
 	@cp -rf container/frontend/index.html data/frontend/index.html
-	@cp -rf container/frontend/dist data/frontend/dist
+	@cp -rf container/frontend/dist/ data/frontend/dist/
 	@docker-compose build
 start: ## Start application
 	@docker-compose up -d
