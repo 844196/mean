@@ -1,5 +1,3 @@
-help: ## Show this help
-	@awk 'BEGIN{FS=" *:.*## "}/^[a-zA-Z_-]+ *:.* ## .+$$/{printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' Makefile
 all: ## Setup application
 	@mkdir -p data/db data/frontend
 	@$(MAKE) -C container/frontend
@@ -15,6 +13,8 @@ stop: ## Stop application
 clean: stop ## Delete application data
 	@docker-compose rm --force
 	@rm -rf ./data/db/*
+help: ## Show this help
+	@awk 'BEGIN{FS=" *:.*## "}/^[a-zA-Z_-]+ *:.* ## .+$$/{printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' Makefile
 
 .PHONY:
 	help \
