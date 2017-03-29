@@ -22,6 +22,7 @@ export default {
     createTodo(name) {
       this.$store.dispatch('createTodo', {name, isDone: false})
         .then((result) => {
+          this.dialog.value = ''
           this.notify('Created todo!')
         })
         .catch(({ message }) => this.notify(message))
