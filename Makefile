@@ -5,7 +5,7 @@ all: ## Setup application
 	@cp -rf container/frontend/dist/ data/frontend/dist/
 	@docker-compose build
 start: ## Start application
-	@docker-compose up -d
+	@docker-compose up -d $(SERVICE)
 log: ## Tail application logs
 	@docker-compose logs -f
 stop: ## Stop application
