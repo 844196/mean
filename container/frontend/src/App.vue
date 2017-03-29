@@ -42,7 +42,7 @@ export default {
   },
   computed: {
     list() {
-      return this.$store.getters.sortedList
+      return this.$store.state.list
     },
   },
   mounted() {
