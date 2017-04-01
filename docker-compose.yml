@@ -23,7 +23,6 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ./container/proxy/conf.d:/etc/nginx/conf.d:ro
       - ./data/frontend:/www/app:ro
     links:
       - webapi
