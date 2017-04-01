@@ -10,9 +10,8 @@ log: ## Tail application logs
 	@docker-compose logs -f
 stop: ## Stop application
 	@docker-compose stop
-clean: stop ## Delete application data
+clean: stop ## Delete application containers
 	@docker-compose rm --force
-	@rm -rf ./data/db/*
 help: ## Show this help
 	@awk 'BEGIN{FS=" *:.*## "}/^[a-zA-Z_-]+ *:.* ## .+$$/{printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' Makefile
 
