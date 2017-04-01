@@ -1,6 +1,6 @@
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema
-var DocumentNotFoundException = require('../Exceptions/DocumentNotFoundException')
+var NotFoundError = require('../Errors/NotFoundError')
 
 var TodoSchema = new Schema({
   name: {
@@ -29,12 +29,12 @@ TodoSchema.statics.getById = (id) => {
     .findById(id)
     .then((entity) => {
       return new Promise((resolve, reject) => {
-        (entity === null) ? reject(new DocumentNotFoundException()) : resolve(entity)
+        (entity === null) ? reject(new NotFoundError()) : resolve(entity)
       })
     })
     .catch((err) => {
       return new Promise((resolve, reject) => {
-        (err.name === 'CastError') ? reject(new DocumentNotFoundException()) : reject(err)
+        (err.name === 'CastError') ? reject(new NotFoundError()) : reject(err)
       })
     })
 }
@@ -48,12 +48,12 @@ TodoSchema.statics.updateByIdAndPatch = (id, patch) => {
     )
     .then((updatedEntity) => {
       return new Promise((resolve, reject) => {
-        (updatedEntity === null) ? reject(new DocumentNotFoundException()) : resolve(updatedEntity)
+        (updatedEntity === null) ? reject(new NotFoundError()) : resolve(updatedEntity)
       })
     })
     .catch((err) => {
       return new Promise((resolve, reject) => {
-        (err.name === 'CastError') ? reject(new DocumentNotFoundException()) : reject(err)
+        (err.name === 'CastError') ? reject(new NotFoundError()) : reject(err)
       })
     })
 }
