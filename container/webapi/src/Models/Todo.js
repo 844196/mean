@@ -3,8 +3,15 @@ var Schema = mongoose.Schema
 var DocumentNotFoundException = require('../Exceptions/DocumentNotFoundException')
 
 var TodoSchema = new Schema({
-  name: String,
-  isDone: Boolean,
+  name: {
+    type: String,
+    minlength: 1,
+    required: true,
+  },
+  isDone: {
+    type: Boolean,
+    required: true,
+  },
 })
 
 TodoSchema.options.toJSON = {
