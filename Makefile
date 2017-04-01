@@ -12,6 +12,8 @@ stop: ## Stop application
 	@docker-compose stop
 clean: stop ## Delete application containers
 	@docker-compose rm --force
+dump: ## Dump database
+	@tar -zcvf dump-`date '+%Y%m%d%H%M%S'`.tar.gz data/db/
 help: ## Show this help
 	@awk 'BEGIN{FS=" *:.*## "}/^[a-zA-Z_-]+ *:.* ## .+$$/{printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' Makefile
 
@@ -21,4 +23,5 @@ help: ## Show this help
 	start \
 	log \
 	stop \
+	dump \
 	clean
