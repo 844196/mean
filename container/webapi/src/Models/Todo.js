@@ -22,6 +22,7 @@ TodoSchema.options.toJSON = {
     return ret
   }
 }
+TodoSchema.options.strict = true
 
 TodoSchema.statics.getById = (id) => {
   return Todo
