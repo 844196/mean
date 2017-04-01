@@ -44,7 +44,7 @@ TodoSchema.statics.updateByIdAndPatch = (id, patch) => {
     .findByIdAndUpdate(
       id,
       {$set: patch},
-      {new: true}
+      {new: true, runValidators: true}
     )
     .then((updatedEntity) => {
       return new Promise((resolve, reject) => {
